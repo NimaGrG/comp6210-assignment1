@@ -1,4 +1,3 @@
-/root/.profile: line 9: /dev/null: Permission denied
 import { expect, test } from '@playwright/test'
 
 test('desktop catalogue, navigation, search and filtering', async ({ page }) => {
