@@ -1,3 +1,4 @@
+/root/.profile: line 9: /dev/null: Permission denied
 import { expect, test } from '@playwright/test'
 
 test('desktop catalogue, navigation, search and filtering', async ({ page }) => {
@@ -21,10 +22,12 @@ test('mobile catalogue drawer and subject record', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'SCP-002', level: 1 })).toBeVisible()
   await page.getByRole('button', { name: 'Catalogue', exact: true }).click()
   await expect(page.getByRole('complementary', { name: 'SCP catalogue' })).toBeVisible()
+  await page.waitForTimeout(300)
   await page.screenshot({ path: 'evidence/mobile-catalogue.png', fullPage: false })
 
   await page.getByRole('option').filter({ hasText: 'SCP-005' }).click()
   await expect(page.getByRole('heading', { name: 'SCP-005', level: 1 })).toBeVisible()
   await expect(page).toHaveURL(/#scp-005$/)
+  await page.waitForTimeout(300)
   await page.screenshot({ path: 'evidence/mobile-scp-005.png', fullPage: false })
 })
