@@ -19,7 +19,7 @@ test('mobile catalogue drawer and subject record', async ({ page }) => {
   await page.goto('/')
 
   await expect(page.getByRole('heading', { name: 'SCP-002', level: 1 })).toBeVisible()
-  await page.getByRole('button', { name: 'Catalogue' }).click()
+  await page.getByRole('button', { name: 'Catalogue', exact: true }).click()
   await expect(page.getByRole('complementary', { name: 'SCP catalogue' })).toBeVisible()
   await page.screenshot({ path: 'evidence/mobile-catalogue.png', fullPage: false })
 
